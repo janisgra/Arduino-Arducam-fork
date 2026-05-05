@@ -101,6 +101,12 @@
 #ifndef ArduCAM_H
 #define ArduCAM_H
 #include "memorysaver.h"
+#ifndef ARDUCAM_LIB_BUILD_INFO
+#define ARDUCAM_LIB_BUILD_INFO
+#define ARDUCAM_STR2(x) #x
+#define ARDUCAM_STR(x) ARDUCAM_STR2(x)
+#pragma message ("ArduCAM.h from: " __FILE__)
+#endif
 #if defined ( RASPBERRY_PI ) 
 #else
 	#include "Arduino.h"
@@ -202,6 +208,21 @@
 	
 	#define fontbyte(x) cfont.font[x]  
 	
+	#define regtype volatile uint32_t
+	#define regsize uint32_t
+#endif
+
+#if defined(ARDUINO_ARCH_ZEPHYR) || defined(ARDUINO_UNO_Q)
+	#define cbi(reg, bitmask) digitalWrite(bitmask, LOW)
+	#define sbi(reg, bitmask) digitalWrite(bitmask, HIGH)
+	#define pulse_high(reg, bitmask) sbi(reg, bitmask); cbi(reg, bitmask);
+	#define pulse_low(reg, bitmask) cbi(reg, bitmask); sbi(reg, bitmask);
+
+	#define cport(port, data) port &= data
+	#define sport(port, data) port |= data
+
+	#define swap(type, i, j) {type t = i; i = j; j = t;}
+	#define fontbyte(x) cfont.font[x]
 	#define regtype volatile uint32_t
 	#define regsize uint32_t
 #endif

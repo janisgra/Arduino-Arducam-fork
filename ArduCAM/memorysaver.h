@@ -8,12 +8,13 @@
 //Only ArduCAM Shield series platform need to select camera module, ArduCAM-Mini series platform doesn't
 
 //Step 1: select the hardware platform, only one at a time
-//#define OV2640_MINI_2MP
+// Arduino Uno Q uses the ArduCAM-M-2MP (OV2640).
+#define OV2640_MINI_2MP
 //#define OV3640_MINI_3MP
 //#define OV5642_MINI_5MP
 //#define OV5642_MINI_5MP_BIT_ROTATION_FIXED
 //#define OV2640_MINI_2MP_PLUS
-#define OV5642_MINI_5MP_PLUS
+//#define OV5642_MINI_5MP_PLUS
 //#define OV5640_MINI_5MP_PLUS
 
 
