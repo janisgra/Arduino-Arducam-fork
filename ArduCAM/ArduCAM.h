@@ -105,7 +105,9 @@
 #define ARDUCAM_LIB_BUILD_INFO
 #define ARDUCAM_STR2(x) #x
 #define ARDUCAM_STR(x) ARDUCAM_STR2(x)
+#if defined(ARDUCAM_SHOW_PATH)
 #pragma message ("ArduCAM.h from: " __FILE__)
+#endif
 #endif
 #if defined ( RASPBERRY_PI ) 
 #else
